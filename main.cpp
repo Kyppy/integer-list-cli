@@ -5,16 +5,18 @@ using namespace std;
 int main () {
     vector <int> user_integers (0);
     char menu_selection;
+    bool exit = true;
     
     do
     {
-       cout << "-----------------------------------------" << endl;
+       cout << "\n-----------------------------------------" << endl;
        cout << "Welcome to menu." << endl;
        cout << "P - Print numbers" << endl;
        cout << "A - Add a number" << endl;
        cout << "M - Display the mean of numbers" << endl;
        cout << "S - Display the smallest number" << endl;
        cout << "L - Display the largest number" << endl;
+       cout << "Q - Quit" << endl;
 
        cout << "Please enter your choice" << endl;
        cin >> menu_selection;
@@ -23,19 +25,80 @@ int main () {
            case 'P':
            case 'p': {
                if (user_integers.size() < 1) {
-                   cout << "[] - Empty. Please add integers by selecting the 'A' menu option." << endl;
+                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list." << endl;
                } else {
-                   cout << "[ ";
+                   cout << "[";
                    for (auto integer: user_integers){
                        cout << " " << integer;
                    }
-                   cout << " ]";
+                   cout << " ]" << endl;
                }
                break;
-            default: cout << "Unknown selection please try again" << endl;
            }
+
+           case 'A':
+           case 'a':{
+               cout << "Please type an integer and then press enter" << endl;
+
+               int additonal_number;
+               cin >> additonal_number;
+               user_integers.push_back(additonal_number);
+               break;
+           }
+
+           case 'M':
+           case 'm':{
+               int sum = {0};
+               for ( auto integer: user_integers){
+                   sum += integer;
+               }
+
+               float mean = sum/user_integers.size();
+               cout << "The mean of your numbers is : " << mean << endl; 
+               break;
+           }
+
+           case 'S':
+           case 's':{
+               if (user_integers.size() < 1) {
+                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list." << endl;
+               } else {
+                   int smallest_number = user_integers[0];
+                   for (auto integer: user_integers) {
+                      if (integer < smallest_number){
+                          smallest_number = integer;
+                      }
+                   }
+                   cout << "The smallest number in your list is : " << smallest_number << endl;
+               }
+               break;
+           }
+
+           case 'L':
+           case 'l':{
+               if (user_integers.size() < 1) {
+                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list." << endl;
+               } else {
+                   int largest_number = user_integers[0];
+                   for (auto integer: user_integers) {
+                      if (integer > largest_number){
+                          largest_number = integer;
+                      }
+                   }
+                   cout << "The largest number in your list is : " << largest_number << endl;
+               }
+               break;
+           }
+
+           case 'Q':
+           case 'q':{
+               exit = false;
+               break;
+           }
+
+           default: cout << "Unknown selection please try again" << endl;
        }
-    } while (true);
+    } while (exit);
     
     return 0;
 }
