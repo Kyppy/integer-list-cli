@@ -13,6 +13,7 @@ int main () {
        cout << "Welcome to menu." << endl;
        cout << "P - Print numbers" << endl;
        cout << "A - Add a number" << endl;
+       cout << "C - Clear the list" << endl;
        cout << "M - Display the mean of numbers" << endl;
        cout << "S - Display the smallest number" << endl;
        cout << "L - Display the largest number" << endl;
@@ -25,7 +26,7 @@ int main () {
            case 'P':
            case 'p': {
                if (user_integers.size() < 1) {
-                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list." << endl;
+                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list" << endl;
                } else {
                    cout << "[";
                    for (auto integer: user_integers){
@@ -38,11 +39,20 @@ int main () {
 
            case 'A':
            case 'a':{
-               cout << "Please type an integer and then press enter" << endl;
+               cout << "Please type an integer and then press 'Enter'" << endl;
 
                int additonal_number;
                cin >> additonal_number;
                user_integers.push_back(additonal_number);
+
+               cout << additonal_number << " Has been added to the list" << endl;
+               break;
+           }
+
+           case 'C':
+           case 'c':{
+               user_integers.clear();
+               cout << "List successfully cleared" << endl;
                break;
            }
 
@@ -52,16 +62,15 @@ int main () {
                for ( auto integer: user_integers){
                    sum += integer;
                }
-
                float mean = sum/user_integers.size();
-               cout << "The mean of your numbers is : " << mean << endl; 
+               cout << "The mean of your numbers is: " << mean << endl; 
                break;
            }
 
            case 'S':
            case 's':{
                if (user_integers.size() < 1) {
-                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list." << endl;
+                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list" << endl;
                } else {
                    int smallest_number = user_integers[0];
                    for (auto integer: user_integers) {
@@ -69,7 +78,7 @@ int main () {
                           smallest_number = integer;
                       }
                    }
-                   cout << "The smallest number in your list is : " << smallest_number << endl;
+                   cout << "The smallest number in your list is: " << smallest_number << endl;
                }
                break;
            }
@@ -77,7 +86,7 @@ int main () {
            case 'L':
            case 'l':{
                if (user_integers.size() < 1) {
-                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list." << endl;
+                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list" << endl;
                } else {
                    int largest_number = user_integers[0];
                    for (auto integer: user_integers) {
@@ -85,13 +94,14 @@ int main () {
                           largest_number = integer;
                       }
                    }
-                   cout << "The largest number in your list is : " << largest_number << endl;
+                   cout << "The largest number in your list is: " << largest_number << endl;
                }
                break;
            }
 
            case 'Q':
            case 'q':{
+               cout << "Goodbye!" << endl;
                exit = false;
                break;
            }
