@@ -14,6 +14,7 @@ int main () {
        cout << "P - Print numbers" << endl;
        cout << "A - Add a number" << endl;
        cout << "C - Clear the list" << endl;
+       cout << "F - Find an integer in the list" << endl;
        cout << "M - Display the mean of numbers" << endl;
        cout << "S - Display the smallest number" << endl;
        cout << "L - Display the largest number" << endl;
@@ -53,6 +54,25 @@ int main () {
            case 'c':{
                user_integers.clear();
                cout << "List successfully cleared" << endl;
+               break;
+           }
+
+           case 'F':
+           case 'f':{
+               int search_integer {0};
+               cout << "Please enter an integer: ";
+               cin >> search_integer;
+
+               int occurrences {0}; 
+               for ( auto integer: user_integers){
+                   if (integer == search_integer){
+                       occurrences += 1;
+                   }
+               }
+
+               if  (occurrences > 0) {
+                   cout << search_integer <<" Appears " << occurrences << " time(s) in your list" << endl;
+               }
                break;
            }
 
