@@ -24,19 +24,6 @@ int main () {
        cin >> menu_selection;
 
        switch (menu_selection) {
-           case 'P':
-           case 'p': {
-               if (user_integers.size() < 1) {
-                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list" << endl;
-               } else {
-                   cout << "[";
-                   for (auto integer: user_integers){
-                       cout << " " << integer;
-                   }
-                   cout << " ]" << endl;
-               }
-               break;
-           }
            case 'A':
            case 'a':{
                cout << "Please type an integer and then press 'Enter'" << endl;
@@ -68,36 +55,6 @@ int main () {
                }
                break;
            }
-           case 'M':
-           case 'm':{
-               if (user_integers.size() < 1) {
-                   cout << "Your list is empty, unable to calculate mean. You can use the 'A' option in the menu to add integers to your list" << endl;
-                   break;    
-               }
-               int sum = {0};
-               for ( auto integer: user_integers){
-                   sum += integer;
-               }
-               
-               cout << "The mean of your numbers is: " << static_cast<double>(sum)/user_integers.size() << endl; 
-               break;
-           }
-           case 'S':
-           case 's':{
-               if (user_integers.size() < 1) {
-                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list" << endl;
-                   break;
-               } else {
-                   int smallest_number = user_integers.at(0);
-                   for (auto integer: user_integers) {
-                      if (integer < smallest_number){
-                          smallest_number = integer;
-                      }
-                   }
-                   cout << "The smallest number in your list is: " << smallest_number << endl;
-               }
-               break;
-           }
            case 'L':
            case 'l':{
                if (user_integers.size() < 1) {
@@ -114,10 +71,54 @@ int main () {
                }
                break;
            }
+           case 'M':
+           case 'm':{
+               if (user_integers.size() < 1) {
+                   cout << "Your list is empty, unable to calculate mean. You can use the 'A' option in the menu to add integers to your list" << endl;
+                   break;    
+               }
+               int sum = {0};
+               for ( auto integer: user_integers){
+                   sum += integer;
+               }
+               
+               cout << "The mean of your numbers is: " << static_cast<double>(sum)/user_integers.size() << endl; 
+               break;
+           }
+
+           case 'P':
+           case 'p': {
+               if (user_integers.size() < 1) {
+                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list" << endl;
+               } else {
+                   cout << "[";
+                   for (auto integer: user_integers){
+                       cout << " " << integer;
+                   }
+                   cout << " ]" << endl;
+               }
+               break;
+           }
            case 'Q':
            case 'q':{
                cout << "Goodbye!" << endl;
                exit = false;
+               break;
+           }
+           case 'S':
+           case 's':{
+               if (user_integers.size() < 1) {
+                   cout << "[] - Your list is empty. You can use the 'A' option in the menu to add integers to your list" << endl;
+                   break;
+               } else {
+                   int smallest_number = user_integers.at(0);
+                   for (auto integer: user_integers) {
+                      if (integer < smallest_number){
+                          smallest_number = integer;
+                      }
+                   }
+                   cout << "The smallest number in your list is: " << smallest_number << endl;
+               }
                break;
            }
            default: cout << "Unknown selection. Please select a valid option" << endl;
