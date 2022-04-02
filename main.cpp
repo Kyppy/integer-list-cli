@@ -11,13 +11,13 @@ int main () {
     {
        cout << "\n-----------------------------------------" << endl;
        cout << "Welcome to the menu. Please select an operation" << endl;
-       cout << "P - Print numbers" << endl;
-       cout << "A - Add a number" << endl;
+       cout << "P - Print list" << endl;
+       cout << "A - Add a number to your list" << endl;
        cout << "C - Clear the list" << endl;
        cout << "F - Find an integer in the list" << endl;
-       cout << "M - Display the mean of numbers" << endl;
-       cout << "S - Display the smallest number" << endl;
-       cout << "L - Display the largest number" << endl;
+       cout << "M - Display the mean of list numbers" << endl;
+       cout << "S - Display the smallest list number" << endl;
+       cout << "L - Display the largest list number" << endl;
        cout << "Q - Quit" << endl;
 
        cout << "Please enter your choice" << endl;
